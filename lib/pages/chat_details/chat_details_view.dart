@@ -238,56 +238,6 @@ class ChatDetailsView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        Divider(color: theme.dividerColor),
-                        ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: theme.scaffoldBackgroundColor,
-                            foregroundColor: iconColor,
-                            child: const Icon(
-                              Icons.insert_emoticon_outlined,
-                            ),
-                          ),
-                          title:
-                              Text(L10n.of(context)!.customEmojisAndStickers),
-                          subtitle: Text(L10n.of(context)!.setCustomEmotes),
-                          onTap: controller.goToEmoteSettings,
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                        ),
-                        if (!room.isDirectChat)
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: theme.scaffoldBackgroundColor,
-                              foregroundColor: iconColor,
-                              child: const Icon(Icons.shield_outlined),
-                            ),
-                            title: Text(
-                              L10n.of(context)!.accessAndVisibility,
-                            ),
-                            subtitle: Text(
-                              L10n.of(context)!.accessAndVisibilityDescription,
-                            ),
-                            onTap: () => context
-                                .push('/rooms/${room.id}/details/access'),
-                            trailing: const Icon(Icons.chevron_right_outlined),
-                          ),
-                        if (!room.isDirectChat)
-                          ListTile(
-                            title: Text(L10n.of(context)!.chatPermissions),
-                            subtitle: Text(
-                              L10n.of(context)!.whoCanPerformWhichAction,
-                            ),
-                            leading: CircleAvatar(
-                              backgroundColor: theme.scaffoldBackgroundColor,
-                              foregroundColor: iconColor,
-                              child: const Icon(
-                                Icons.edit_attributes_outlined,
-                              ),
-                            ),
-                            trailing: const Icon(Icons.chevron_right_outlined),
-                            onTap: () => context
-                                .push('/rooms/${room.id}/details/permissions'),
-                          ),
-                        Divider(color: theme.dividerColor),
                         ListTile(
                           title: Text(
                             L10n.of(context)!.countParticipants(
