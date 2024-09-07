@@ -4,8 +4,8 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
-import 'package:fluffychat/pages/chat_list/client_chooser_button.dart';
 import '../../widgets/matrix.dart';
+import 'client_avatar_button.dart';
 
 class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
   final ChatListController controller;
@@ -110,10 +110,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                               maxLines: 2,
                             ),
                           )
-                    : SizedBox(
-                        width: 0,
-                        child: ClientChooserButton(controller),
-                      ),
+                    : ClientAvatarButton(controller),
               ),
             ),
       actions: selectMode == SelectMode.share
@@ -123,7 +120,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                   horizontal: 16.0,
                   vertical: 8.0,
                 ),
-                child: ClientChooserButton(controller),
+                child: ClientAvatarButton(controller),
               ),
             ]
           : null,
