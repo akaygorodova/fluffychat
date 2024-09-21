@@ -11,7 +11,6 @@ import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pages/chat_list/space_view.dart';
 import 'package:fluffychat/pages/chat_list/status_msg_list.dart';
-import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -54,13 +53,6 @@ class ChatListViewBody extends StatelessWidget {
       }
     }
 
-    final publicRooms = controller.roomSearchResult?.chunk
-        .where((room) => room.roomType != 'm.space')
-        .toList();
-    final publicSpaces = controller.roomSearchResult?.chunk
-        .where((room) => room.roomType == 'm.space')
-        .toList();
-    final userSearchResult = controller.userSearchResult;
     const dummyChatCount = 4;
     final filter = controller.searchController.text.toLowerCase();
     return StreamBuilder(
@@ -81,53 +73,6 @@ class ChatListViewBody extends StatelessWidget {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    if (controller.isSearchMode) ...[
-                      SearchTitle(
-                        title: L10n.of(context)!.publicRooms,
-                        icon: const Icon(Icons.explore_outlined),
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicRooms),
-                      SearchTitle(
-                        title: L10n.of(context)!.publicSpaces,
-                        icon: const Icon(Icons.workspaces_outlined),
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicSpaces),
-                      SearchTitle(
-                        title: L10n.of(context)!.users,
-                        icon: const Icon(Icons.group_outlined),
-                      ),
-                      AnimatedContainer(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(),
-                        height: userSearchResult == null ||
-                                userSearchResult.results.isEmpty
-                            ? 0
-                            : 106,
-                        duration: FluffyThemes.animationDuration,
-                        curve: FluffyThemes.animationCurve,
-                        child: userSearchResult == null
-                            ? null
-                            : ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: userSearchResult.results.length,
-                                itemBuilder: (context, i) => _SearchItem(
-                                  title:
-                                      userSearchResult.results[i].displayName ??
-                                          userSearchResult
-                                              .results[i].userId.localpart ??
-                                          L10n.of(context)!.unknownDevice,
-                                  avatar: userSearchResult.results[i].avatarUrl,
-                                  onPressed: () => showAdaptiveBottomSheet(
-                                    context: context,
-                                    builder: (c) => UserBottomSheet(
-                                      profile: userSearchResult.results[i],
-                                      outerContext: context,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                      ),
-                    ],
                     if (!controller.isSearchMode && AppConfig.showPresences)
                       GestureDetector(
                         onLongPress: () => controller.dismissStatusList(),

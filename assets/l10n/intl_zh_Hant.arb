@@ -2003,7 +2003,7 @@
   "@archiveRoomDescription": {},
   "banUserDescription": "該使用者將被禁止進入聊天室，直到他們被解封之前都無法再次進入聊天室。",
   "@banUserDescription": {},
-  "searchChatsRooms": "搜尋 #chats, @users...",
+  "searchChatsRooms": "搜尋 #chats",
   "@searchChatsRooms": {},
   "decline": "拒絕",
   "@decline": {},

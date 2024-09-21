@@ -2513,7 +2513,7 @@
       "server": {}
     }
   },
-  "searchChatsRooms": "Search for #chats, @users...",
+  "searchChatsRooms": "Search for #chats",
   "@searchChatsRooms": {},
   "nothingFound": "Nothing found...",
   "@nothingFound": {},

@@ -2450,7 +2450,7 @@
   "@groupName": {},
   "databaseMigrationTitle": "База данных оптимизированна",
   "@databaseMigrationTitle": {},
-  "searchChatsRooms": "Поиск #чатов, @людей...",
+  "searchChatsRooms": "Поиск #чатов",
   "@searchChatsRooms": {},
   "databaseMigrationBody": "Пожалуйста, подождите. Это может занять некоторое время.",
   "@databaseMigrationBody": {},
