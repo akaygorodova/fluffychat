@@ -132,9 +132,6 @@ flutter:
     - family: RobotoMono
       fonts:
         - asset: fonts/Roboto/RobotoMono-Regular.ttf
-    - family: NotoEmoji
-      fonts:
-        - asset: fonts/NotoEmoji/NotoColorEmoji.ttf
 
 msix_config:
   display_name: FluffyChat
