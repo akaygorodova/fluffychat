@@ -112,6 +112,17 @@ class SettingsView extends StatelessWidget {
             ),
             Divider(color: theme.dividerColor),
             ListTile(
+              leading: const Icon(Icons.format_paint_outlined),
+              title: Text(L10n.of(context)!.changeTheme),
+              onTap: () => context.go('/rooms/settings/style'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.shield_outlined),
+              title: Text(L10n.of(context)!.security),
+              onTap: () => context.go('/rooms/settings/security'),
+            ),
+            Divider(color: theme.dividerColor),
+            ListTile(
               leading: const Icon(Icons.logout_outlined),
               title: Text(L10n.of(context)!.logout),
               onTap: controller.logoutAction,
