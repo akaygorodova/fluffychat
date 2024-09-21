@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
-import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
@@ -226,49 +225,6 @@ class UserBottomSheetView extends StatelessWidget {
                     );
                   },
                 ),
-                if (userId != client.userID)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 8.0,
-                    ),
-                    child: dmRoomId == null
-                        ? ElevatedButton.icon(
-                            onPressed: () => controller.participantAction(
-                              UserBottomSheetAction.message,
-                            ),
-                            icon: const Icon(Icons.chat_outlined),
-                            label: Text(L10n.of(context)!.startConversation),
-                          )
-                        : TextField(
-                            controller: controller.sendController,
-                            readOnly: controller.isSending,
-                            onSubmitted: controller.sendAction,
-                            minLines: 1,
-                            maxLines: 1,
-                            textInputAction: TextInputAction.send,
-                            decoration: InputDecoration(
-                              errorText: controller.sendError
-                                  ?.toLocalizedString(context),
-                              hintText: L10n.of(context)!.sendMessages,
-                              suffix: controller.isSending
-                                  ? const SizedBox(
-                                      width: 16,
-                                      height: 16,
-                                      child: CircularProgressIndicator.adaptive(
-                                        strokeWidth: 2,
-                                      ),
-                                    )
-                                  : null,
-                              suffixIcon: controller.isSending
-                                  ? null
-                                  : IconButton(
-                                      icon: const Icon(Icons.send_outlined),
-                                      onPressed: controller.sendAction,
-                                    ),
-                            ),
-                          ),
-                  ),
                 if (controller.widget.onMention != null)
                   ListTile(
                     leading: const Icon(Icons.alternate_email_outlined),
