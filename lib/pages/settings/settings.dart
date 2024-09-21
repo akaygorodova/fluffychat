@@ -65,7 +65,6 @@ class SettingsController extends State<Settings> {
           useRootNavigator: false,
           context: context,
           title: L10n.of(context)!.areYouSureYouWantToLogout,
-          message: L10n.of(context)!.noBackupWarning,
           isDestructiveAction: noBackup,
           okLabel: L10n.of(context)!.logout,
           cancelLabel: L10n.of(context)!.cancel,
