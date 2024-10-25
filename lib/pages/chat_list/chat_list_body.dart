@@ -109,10 +109,6 @@ class ChatListViewBody extends StatelessWidget {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
-                            if (AppConfig.separateChatTypes)
-                              ActiveFilter.messages
-                            else
-                              ActiveFilter.allChats,
                             ActiveFilter.groups,
                             ActiveFilter.unread,
                             if (spaceDelegateCandidates.isNotEmpty &&
@@ -227,7 +223,7 @@ class ChatListViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              if (client.prevBatch == null)
+              if (false)
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, i) => DummyChatListItem(
@@ -237,7 +233,7 @@ class ChatListViewBody extends StatelessWidget {
                     childCount: dummyChatCount,
                   ),
                 ),
-              if (client.prevBatch != null)
+              if (true)
                 SliverList.builder(
                   itemCount: rooms.length,
                   itemBuilder: (BuildContext context, int i) {

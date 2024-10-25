@@ -101,9 +101,7 @@ class ChatListController extends State<ChatList>
     context.push<String?>('/rooms/newspace');
   }
 
-  ActiveFilter activeFilter = AppConfig.separateChatTypes
-      ? ActiveFilter.messages
-      : ActiveFilter.allChats;
+  ActiveFilter activeFilter = ActiveFilter.groups;
 
   String? _activeSpaceId;
   String? get activeSpaceId => _activeSpaceId;
@@ -831,7 +829,7 @@ class ChatListController extends State<ChatList>
   void setActiveClient(Client client) {
     context.go('/rooms');
     setState(() {
-      activeFilter = ActiveFilter.allChats;
+      activeFilter = ActiveFilter.groups;
       _activeSpaceId = null;
       Matrix.of(context).setActiveClient(client);
     });
