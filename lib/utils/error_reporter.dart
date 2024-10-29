@@ -5,9 +5,6 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_highlighter/flutter_highlighter.dart';
 import 'package:flutter_highlighter/themes/shades-of-purple.dart';
 import 'package:matrix/matrix.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 
 class ErrorReporter {
   final BuildContext context;
@@ -43,20 +40,6 @@ class ErrorReporter {
               ClipboardData(text: text),
             ),
             child: Text(L10n.of(context)!.copy),
-          ),
-          TextButton(
-            onPressed: () => launchUrl(
-              AppConfig.newIssueUrl.resolveUri(
-                Uri(
-                  queryParameters: {
-                    'template': 'bug_report.yaml',
-                    'title': '[BUG]: ${message ?? error.toString()}',
-                  },
-                ),
-              ),
-              mode: LaunchMode.externalApplication,
-            ),
-            child: Text(L10n.of(context)!.report),
           ),
         ],
       ),
