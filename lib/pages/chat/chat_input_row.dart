@@ -167,7 +167,7 @@ class ChatInputRow extends StatelessWidget {
                             contentPadding: const EdgeInsets.all(0),
                           ),
                         ),
-                      if (PlatformInfos.isMobile)
+                      if (false)
                         PopupMenuItem<String>(
                           value: 'location',
                           child: ListTile(
