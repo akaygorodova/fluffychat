@@ -115,6 +115,10 @@ flutter:
     - assets/
     - assets/sounds/
     - assets/vodozemac/
+  module:
+    androidX: true
+    androidPackage: com.example.matrixchat_module
+    iosBundleIdentifier: com.example.matrixchatModule
 
 # Guidelines for adding a dependency override:
 # 1. Don't do it if you can avoid it or fix it upstream in a manageable time
@@ -134,3 +138,13 @@ dependency_overrides:
       url: https://github.com/ThexXTURBOXx/flutter_web_auth_2.git
       ref: 3.x-without-v1
       path: flutter_web_auth_2
+  # в прошлой версии не указана совместимая версия java
+  native_imaging:
+    git:
+      url: https://github.com/famedly/dart_native_imaging.git
+      ref: v0.2.1
+  # в прошлой версии не указана совместимая версия java
+  receive_sharing_intent:
+    git:
+      url: https://github.com/akaygorodova/receive_sharing_intent.git
+      ref: 1.8.1-jdk-17

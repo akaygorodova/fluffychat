@@ -1154,10 +1154,11 @@ packages:
   native_imaging:
     dependency: "direct main"
     description:
-      name: native_imaging
-      sha256: "93573afdcab070011d78a40fc1f69b61967f1f8485d2b81a7a2ee585a85f4c04"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "v0.2.1"
+      resolved-ref: "1bb5d44801bf5eb67f4ed005bb855c8011a68272"
+      url: "https://github.com/famedly/dart_native_imaging.git"
+    source: git
     version: "0.2.0"
   nested:
     dependency: transitive
@@ -1450,10 +1451,11 @@ packages:
   receive_sharing_intent:
     dependency: "direct main"
     description:
-      name: receive_sharing_intent
-      sha256: ec76056e4d258ad708e76d85591d933678625318e411564dcb9059048ca3a593
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "1.8.1-jdk-17"
+      resolved-ref: "1d55513c5f7b1006b4642206c59a17cd0f74f2ff"
+      url: "https://github.com/akaygorodova/receive_sharing_intent.git"
+    source: git
     version: "1.8.1"
   record:
     dependency: "direct main"
