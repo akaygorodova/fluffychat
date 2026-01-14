@@ -31,7 +31,6 @@ class ChatEmojiPicker extends StatelessWidget {
                   TabBar(
                     tabs: [
                       Tab(text: L10n.of(context).emojis),
-                      Tab(text: L10n.of(context).stickers),
                     ],
                   ),
                   Expanded(
