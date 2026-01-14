@@ -4,7 +4,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 import '../../widgets/avatar.dart';
 
 class ParticipantListItem extends StatelessWidget {
@@ -31,7 +30,6 @@ class ParticipantListItem extends StatelessWidget {
             : '';
 
     return ListTile(
-      onTap: () => showMemberActionsPopupMenu(context: context, user: user),
       title: Row(
         children: <Widget>[
           Expanded(
@@ -83,11 +81,6 @@ class ParticipantListItem extends StatelessWidget {
                   ),
                 ),
         ],
-      ),
-      subtitle: Text(
-        user.id,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
       ),
       leading: Opacity(
         opacity: user.membership == Membership.join ? 1 : 0.5,
