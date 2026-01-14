@@ -136,16 +136,6 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               ),
             ),
             PopupMenuItem<ChatPopupMenuActions>(
-              value: ChatPopupMenuActions.emote,
-              child: Row(
-                children: [
-                  const Icon(Icons.emoji_emotions_outlined),
-                  const SizedBox(width: 12),
-                  Text(L10n.of(context).emoteSettings),
-                ],
-              ),
-            ),
-            PopupMenuItem<ChatPopupMenuActions>(
               value: ChatPopupMenuActions.leave,
               child: Row(
                 children: [
