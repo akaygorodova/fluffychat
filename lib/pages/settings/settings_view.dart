@@ -20,6 +20,8 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final activeRoute =
+        GoRouter.of(context).routeInformationProvider.value.uri.path;
     return Row(
       children: [
         if (FluffyThemes.isColumnMode(context)) ...[
@@ -143,6 +145,23 @@ class SettingsView extends StatelessWidget {
                         ],
                       );
                     },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.format_paint_outlined),
+                    title: Text(L10n.of(context).changeTheme),
+                    tileColor: activeRoute.startsWith('/rooms/settings/style')
+                        ? theme.colorScheme.surfaceContainerHigh
+                        : null,
+                    onTap: () => context.go('/rooms/settings/style'),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.shield_outlined),
+                    title: Text(L10n.of(context).security),
+                    onTap: () => context.go('/rooms/settings/security'),
+                    tileColor:
+                    activeRoute.startsWith('/rooms/settings/security')
+                        ? theme.colorScheme.surfaceContainerHigh
+                        : null,
                   ),
                   Divider(color: theme.dividerColor),
                   ListTile(
