@@ -518,25 +518,6 @@ class ChatListController extends State<ChatList>
           ),
         if (room.membership == Membership.join) ...[
           PopupMenuItem(
-            value: ChatContextAction.mute,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  room.pushRuleState == PushRuleState.notify
-                      ? Icons.notifications_off_outlined
-                      : Icons.notifications_off,
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  room.pushRuleState == PushRuleState.notify
-                      ? L10n.of(context).muteChat
-                      : L10n.of(context).unmuteChat,
-                ),
-              ],
-            ),
-          ),
-          PopupMenuItem(
             value: ChatContextAction.markUnread,
             child: Row(
               mainAxisSize: MainAxisSize.min,
