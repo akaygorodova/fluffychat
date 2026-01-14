@@ -2729,7 +2729,7 @@
   "@jump": {},
   "openLinkInBrowser": "Open link in browser",
   "@openLinkInBrowser": {},
-  "reportErrorDescription": "😭 Oh no. Something went wrong. If you want, you can report this bug to the developers.",
+  "reportErrorDescription": "😭 Oh no. Something went wrong.",
   "@reportErrorDescription": {},
   "report": "report",
   "@report": {},

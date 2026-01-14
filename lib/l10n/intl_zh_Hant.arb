@@ -2760,7 +2760,7 @@
     "@jumpToLastReadMessage": {},
     "openLinkInBrowser": "在瀏覽器中開啟連結",
     "@openLinkInBrowser": {},
-    "reportErrorDescription": "😭 哦不。出了些問題。如果您願意，可以將此錯誤報告給開發者。",
+    "reportErrorDescription": "😭 哦不。出了些問題。",
     "@reportErrorDescription": {},
     "readUpToHere": "讀到這裡",
     "@readUpToHere": {},

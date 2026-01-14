@@ -2469,7 +2469,7 @@
     "@noBackupWarning": {},
     "noOtherDevicesFound": "Другие устройства не найдены",
     "@noOtherDevicesFound": {},
-    "reportErrorDescription": "😭 О, нет. Что-то пошло не так. При желании вы можете сообщить об этой ошибке разработчикам.",
+    "reportErrorDescription": "😭 О, нет. Что-то пошло не так.",
     "@reportErrorDescription": {},
     "report": "пожаловаться",
     "@report": {},
