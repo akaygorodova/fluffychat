@@ -78,10 +78,6 @@ class ChatListViewBody extends StatelessWidget {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
-                            if (AppSettings.separateChatTypes.value)
-                              ActiveFilter.messages
-                            else
-                              ActiveFilter.allChats,
                             ActiveFilter.groups,
                             ActiveFilter.unread,
                             if (spaceDelegateCandidates.isNotEmpty &&
