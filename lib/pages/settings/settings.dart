@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
+import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -13,6 +14,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import '../../config/module_settings_keys.dart';
 import '../../widgets/matrix.dart';
 import '../bootstrap/bootstrap_dialog.dart';
 import 'settings_view.dart';
@@ -76,7 +78,12 @@ class SettingsController extends State<Settings> {
     final matrix = Matrix.of(context);
     await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.logout(),
+      future: () async {
+        const channel = BasicMessageChannel<String>(ModuleSettingKeys.chatPreferences, StringCodec());
+        final logout = await channel.send(ModuleSettingKeys.logout) ?? "";
+        debugPrint("logout: $logout");
+        return matrix.client.logout();
+      },
     );
   }
 

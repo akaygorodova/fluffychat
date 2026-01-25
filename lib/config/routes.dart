@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
@@ -39,39 +40,53 @@ import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
+import '../pages/home_autologin/home_autologin.dart';
+
 abstract class AppRoutes {
   static FutureOr<String?> loggedInRedirect(
     BuildContext context,
     GoRouterState state,
-  ) =>
-      Matrix.of(context).widget.clients.any((client) => client.isLogged())
+  ) {
+    debugPrint("[loggedInRedirect] isLogged: ${ Matrix.of(context).widget.clients.any((client) => client.isLogged()) }");
+
+    return Matrix.of(context).widget.clients.any((client) => client.isLogged())
           ? '/rooms'
           : null;
+  }
 
   static FutureOr<String?> loggedOutRedirect(
     BuildContext context,
     GoRouterState state,
-  ) =>
-      Matrix.of(context).widget.clients.any((client) => client.isLogged())
+  ) {
+    debugPrint("[loggedInRedirect] isLogged: ${ Matrix.of(context).widget.clients.any((client) => client.isLogged()) }");
+    if(!Matrix.of(context).widget.clients.any((client) => client.isLogged())) {
+      SystemNavigator.pop(animated: false);
+    }
+
+    return Matrix.of(context).widget.clients.any((client) => client.isLogged())
           ? null
           : '/home';
+  }
 
   AppRoutes();
 
   static final List<RouteBase> routes = [
     GoRoute(
       path: '/',
-      redirect: (context, state) =>
-          Matrix.of(context).widget.clients.any((client) => client.isLogged())
+      redirect: (context, state) {
+        debugPrint("[/] isLogged: ${ Matrix.of(context).widget.clients.any((client) => client.isLogged()) }");
+
+        return Matrix.of(context).widget.clients.any((client) => client.isLogged())
               ? '/rooms'
-              : '/home',
+              : '/home';
+      },
     ),
     GoRoute(
       path: '/home',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        const HomeserverPicker(addMultiAccount: false),
+        const HomeAutoLogin(),
       ),
       redirect: loggedInRedirect,
       routes: [
