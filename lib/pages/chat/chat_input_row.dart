@@ -139,7 +139,7 @@ class ChatInputRow extends StatelessWidget {
                       onSelected: controller.onAddPopupMenuButtonSelected,
                       itemBuilder: (BuildContext context) =>
                           <PopupMenuEntry<String>>[
-                        if (PlatformInfos.isMobile)
+                        if (false)
                           PopupMenuItem<String>(
                             value: 'location',
                             child: ListTile(

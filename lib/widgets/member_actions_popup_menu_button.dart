@@ -63,16 +63,6 @@ void showMemberActionsPopupMenu({
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    user.id,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 10),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
               ],
             ),
           ],

@@ -2473,7 +2473,7 @@
     "@replace": {},
     "jumpToLastReadMessage": "Pular para a última mensagem lida",
     "@jumpToLastReadMessage": {},
-    "reportErrorDescription": "😭 Ah, não. Algo deu errado. Se quiser, pode relatar isto aos desenvolvedores.",
+    "reportErrorDescription": "😭 Ah, não. Algo deu errado.",
     "@reportErrorDescription": {},
     "setColorTheme": "Aplicar paleta de cor:",
     "@setColorTheme": {},

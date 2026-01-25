@@ -10,12 +10,10 @@ import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pages/chat_list/space_view.dart';
-import 'package:fluffychat/pages/chat_list/status_msg_list.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import '../../config/themes.dart';
-import '../../widgets/adaptive_dialogs/user_dialog.dart';
 import '../../widgets/matrix.dart';
 import 'chat_list_header.dart';
 
@@ -49,13 +47,6 @@ class ChatListViewBody extends StatelessWidget {
       }
     }
 
-    final publicRooms = controller.roomSearchResult?.chunk
-        .where((room) => room.roomType != 'm.space')
-        .toList();
-    final publicSpaces = controller.roomSearchResult?.chunk
-        .where((room) => room.roomType == 'm.space')
-        .toList();
-    final userSearchResult = controller.userSearchResult;
     const dummyChatCount = 4;
     final filter = controller.searchController.text.toLowerCase();
     return StreamBuilder(
@@ -76,75 +67,6 @@ class ChatListViewBody extends StatelessWidget {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    if (controller.isSearchMode) ...[
-                      SearchTitle(
-                        title: L10n.of(context).publicRooms,
-                        icon: const Icon(Icons.explore_outlined),
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicRooms),
-                      SearchTitle(
-                        title: L10n.of(context).publicSpaces,
-                        icon: const Icon(Icons.workspaces_outlined),
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicSpaces),
-                      SearchTitle(
-                        title: L10n.of(context).users,
-                        icon: const Icon(Icons.group_outlined),
-                      ),
-                      AnimatedContainer(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(),
-                        height: userSearchResult == null ||
-                                userSearchResult.results.isEmpty
-                            ? 0
-                            : 106,
-                        duration: FluffyThemes.animationDuration,
-                        curve: FluffyThemes.animationCurve,
-                        child: userSearchResult == null
-                            ? null
-                            : ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: userSearchResult.results.length,
-                                itemBuilder: (context, i) => _SearchItem(
-                                  title:
-                                      userSearchResult.results[i].displayName ??
-                                          userSearchResult
-                                              .results[i].userId.localpart ??
-                                          L10n.of(context).unknownDevice,
-                                  avatar: userSearchResult.results[i].avatarUrl,
-                                  onPressed: () => UserDialog.show(
-                                    context: context,
-                                    profile: userSearchResult.results[i],
-                                  ),
-                                ),
-                              ),
-                      ),
-                    ],
-                    if (!controller.isSearchMode &&
-                        AppSettings.showPresences.value)
-                      GestureDetector(
-                        onLongPress: () => controller.dismissStatusList(),
-                        child: StatusMessageList(
-                          onStatusEdit: controller.setStatus,
-                        ),
-                      ),
-                    AnimatedContainer(
-                      height: controller.isTorBrowser ? 64 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      curve: FluffyThemes.animationCurve,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(),
-                      child: Material(
-                        color: theme.colorScheme.surface,
-                        child: ListTile(
-                          leading: const Icon(Icons.vpn_key),
-                          title: Text(L10n.of(context).dehydrateTor),
-                          subtitle: Text(L10n.of(context).dehydrateTorLong),
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                          onTap: controller.dehydrate,
-                        ),
-                      ),
-                    ),
                     if (client.rooms.isNotEmpty && !controller.isSearchMode)
                       SizedBox(
                         height: 64,
@@ -156,10 +78,6 @@ class ChatListViewBody extends StatelessWidget {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
-                            if (AppSettings.separateChatTypes.value)
-                              ActiveFilter.messages
-                            else
-                              ActiveFilter.allChats,
                             ActiveFilter.groups,
                             ActiveFilter.unread,
                             if (spaceDelegateCandidates.isNotEmpty &&

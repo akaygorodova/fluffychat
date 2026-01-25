@@ -5,7 +5,6 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -13,7 +12,6 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
 import '../../utils/url_launcher.dart';
 import '../future_loading_dialog.dart';
-import '../hover_builder.dart';
 import '../matrix.dart';
 import '../mxc_image_viewer.dart';
 
@@ -87,54 +85,6 @@ class UserDialog extends StatelessWidget {
                           : null,
                     ),
                   ),
-                  HoverBuilder(
-                    builder: (context, hovered) => StatefulBuilder(
-                      builder: (context, setState) => MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            Clipboard.setData(
-                              ClipboardData(text: profile.userId),
-                            );
-                            setState(() {
-                              copied = true;
-                            });
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 4.0),
-                                    child: AnimatedScale(
-                                      duration: FluffyThemes.animationDuration,
-                                      curve: FluffyThemes.animationCurve,
-                                      scale: hovered
-                                          ? 1.33
-                                          : copied
-                                              ? 1.25
-                                              : 1.0,
-                                      child: Icon(
-                                        copied
-                                            ? Icons.check_circle
-                                            : Icons.copy,
-                                        size: 12,
-                                        color: copied ? Colors.green : null,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                TextSpan(text: profile.userId),
-                              ],
-                              style: theme.textTheme.bodyMedium
-                                  ?.copyWith(fontSize: 10),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   if (presenceText != null)
                     Text(
                       presenceText,
@@ -165,28 +115,8 @@ class UserDialog extends StatelessWidget {
       actions: [
         if (client.userID != profile.userId) ...[
           AdaptiveDialogAction(
+            bigButtons: true,
             borderRadius: AdaptiveDialogAction.topRadius,
-            bigButtons: true,
-            onPressed: () async {
-              final router = GoRouter.of(context);
-              final roomIdResult = await showFutureLoadingDialog(
-                context: context,
-                future: () => client.startDirectChat(profile.userId),
-              );
-              final roomId = roomIdResult.result;
-              if (roomId == null) return;
-              if (context.mounted) Navigator.of(context).pop();
-              router.go('/rooms/$roomId');
-            },
-            child: Text(
-              dmRoomId == null
-                  ? L10n.of(context).startConversation
-                  : L10n.of(context).sendAMessage,
-            ),
-          ),
-          AdaptiveDialogAction(
-            bigButtons: true,
-            borderRadius: AdaptiveDialogAction.centerRadius,
             onPressed: () {
               final router = GoRouter.of(context);
               Navigator.of(context).pop();

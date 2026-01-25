@@ -125,28 +125,6 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                   ],
                 ),
               ),
-            if (widget.room.pushRuleState == PushRuleState.notify)
-              PopupMenuItem<ChatPopupMenuActions>(
-                value: ChatPopupMenuActions.mute,
-                child: Row(
-                  children: [
-                    const Icon(Icons.notifications_off_outlined),
-                    const SizedBox(width: 12),
-                    Text(L10n.of(context).muteChat),
-                  ],
-                ),
-              )
-            else
-              PopupMenuItem<ChatPopupMenuActions>(
-                value: ChatPopupMenuActions.unmute,
-                child: Row(
-                  children: [
-                    const Icon(Icons.notifications_on_outlined),
-                    const SizedBox(width: 12),
-                    Text(L10n.of(context).unmuteChat),
-                  ],
-                ),
-              ),
             PopupMenuItem<ChatPopupMenuActions>(
               value: ChatPopupMenuActions.search,
               child: Row(
@@ -154,16 +132,6 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                   const Icon(Icons.search_outlined),
                   const SizedBox(width: 12),
                   Text(L10n.of(context).search),
-                ],
-              ),
-            ),
-            PopupMenuItem<ChatPopupMenuActions>(
-              value: ChatPopupMenuActions.emote,
-              child: Row(
-                children: [
-                  const Icon(Icons.emoji_emotions_outlined),
-                  const SizedBox(width: 12),
-                  Text(L10n.of(context).emoteSettings),
                 ],
               ),
             ),

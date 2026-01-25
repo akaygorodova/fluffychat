@@ -2509,7 +2509,7 @@
             }
         }
     },
-    "reportErrorDescription": "😭 哦不。出了点差错。如果你愿意，可以向开发人员报告此错误。",
+    "reportErrorDescription": "😭 哦不。出了点差错。",
     "@reportErrorDescription": {},
     "noBackupWarning": "警告！如果不启用聊天备份，你将无法访问加密消息。强烈建议在注销前先启用聊天备份。",
     "@noBackupWarning": {},
@@ -2673,7 +2673,7 @@
     "@groupName": {},
     "databaseMigrationTitle": "数据库已优化",
     "@databaseMigrationTitle": {},
-    "searchChatsRooms": "搜索 #聊天，@用户…",
+    "searchChatsRooms": "搜索 #聊天",
     "@searchChatsRooms": {},
     "databaseMigrationBody": "请稍候。可能需要稍等片刻。",
     "@databaseMigrationBody": {},
