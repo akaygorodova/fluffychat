@@ -1114,8 +1114,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "krille/refactor-update-user-device-keys"
-      resolved-ref: d35d78f3b7c38671888e87b9aa80d2a93c811b82
+      ref: "v3.0.2"
+      resolved-ref: e3440c610c23b7859e79c718c1bd4e241f06d027
       url: "https://github.com/famedly/matrix-dart-sdk.git"
     source: git
     version: "3.0.2"
