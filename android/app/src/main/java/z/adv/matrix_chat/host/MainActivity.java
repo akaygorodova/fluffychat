@@ -1,4 +1,4 @@
-package com.example.matrixchat_module.host;
+package z.adv.matrix_chat.host;
 
 import io.flutter.embedding.android.FlutterActivity;
 

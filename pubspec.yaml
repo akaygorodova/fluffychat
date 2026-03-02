@@ -117,8 +117,8 @@ flutter:
     - assets/vodozemac/
   module:
     androidX: true
-    androidPackage: com.example.matrixchat_module
-    iosBundleIdentifier: com.example.matrixchatModule
+    androidPackage: z.adv.matrix_chat
+    iosBundleIdentifier: z.adv.matrixChat
 
 # Guidelines for adding a dependency override:
 # 1. Don't do it if you can avoid it or fix it upstream in a manageable time

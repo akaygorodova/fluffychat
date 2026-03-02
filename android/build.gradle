@@ -11,7 +11,7 @@ apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 
 android {
-    namespace = "com.example.matrixchat_module"
+    namespace = "z.adv.matrix_chat"
     compileSdk = 36
     defaultConfig {
         minSdk = 24

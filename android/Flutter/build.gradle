@@ -24,11 +24,11 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
-group = "com.example.matrixchat_module"
+group = "z.adv.matrix_chat"
 version = "1.0"
 
 android {
-    namespace = "com.example.matrixchat_module"
+    namespace = "z.adv.matrix_chat"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

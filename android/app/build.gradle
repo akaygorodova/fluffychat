@@ -4,7 +4,7 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 
 android {
-    namespace = "com.example.matrixchat_module.host"
+    namespace = "z.adv.matrix_chat.host"
     compileSdk = 36
 
     compileOptions {
@@ -17,7 +17,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.matrixchat_module.host"
+        applicationId = "z.adv.matrix_chat.host"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
